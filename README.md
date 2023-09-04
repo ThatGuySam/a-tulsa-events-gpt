@@ -1,4 +1,6 @@
-# Starlight Starter Kit: Basics
+# Tulsa Events GPT
+
+Tulsa Events found and curated by a Artificial Intelligence LLM. 
 
 ```
 npm create astro@latest -- --template starlight
