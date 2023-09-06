@@ -1,11 +1,11 @@
 {
     "builder": {
-      "type": "static-site",
-      "source": [
-        {
-          "path": "./dist/",
-          "type": "source"
-        }
-      ]
+        "type": "static-site",
+        "source": [
+            {
+                "path": "./dist/",
+                "type": "source"
+            }
+        ]
     }
 }

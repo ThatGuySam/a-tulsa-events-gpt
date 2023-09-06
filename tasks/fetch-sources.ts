@@ -1,10 +1,11 @@
-import {DOMParser, parseHTML} from 'linkedom'
+import process from 'node:process'
+
+import { DOMParser, parseHTML } from 'linkedom'
 
 const eventbriteTulsaUrl = 'https://www.eventbrite.com/d/ok--tulsa/all/'
 const visitTulsaRSSUrl = 'https://www.visittulsa.com/event/rss/'
 
-
-async function getLdJSON( url: string ) {
+async function getLdJSON ( url: string ) {
     const rawHtml = await fetch( url ).then( res => res.text() )
 
     const { document } = parseHTML( rawHtml )
@@ -15,7 +16,7 @@ async function getLdJSON( url: string ) {
         const json = JSON.parse( ldJsonScript.textContent || '' )
 
         return json
-    })
+    } )
 }
 
 async function getRSS ( url: string ) {
@@ -23,7 +24,7 @@ async function getRSS ( url: string ) {
 
     const document = new DOMParser().parseFromString( rawXml, 'text/xml' )
 
-    console.log({ document })
+    console.log( { document } )
 
     // const items = document.querySelectorAll( 'item' )
 
@@ -38,12 +39,12 @@ async function getRSS ( url: string ) {
     // })
 }
 
-;(async () => {
+;( async () => {
     const ldJson = await getLdJSON( eventbriteTulsaUrl )
 
     await getRSS( visitTulsaRSSUrl )
 
-    console.log({ ldJson })
+    console.log( { ldJson } )
 
     process.exit( 0 )
-})()
+} )()
